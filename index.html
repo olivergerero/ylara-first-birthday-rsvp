@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ylara's First Year in Bloom</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Great+Vibes&family=Nunito:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --blush: #fbf6f4;
+      --paper: #fffcfb;
+      --script: #c94b76;
+      --plum: #7a568f;
+      --plum-deep: #6b4b82;
+      --orchid: #a884bc;
+      --orchid-deep: #9674ad;
+      --rose: #e57a98;
+      --rose-deep: #d45d84;
+      --pink-soft: #f7d5e0;
+      --lilac: #cbb6df;
+      --ink: #5c4a56;
+      --muted: #8a7380;
+      --line: #f0d4dc;
+      --line-strong: #e7c4d0;
+      --footer: #c5b0d6;
+      --shadow: 0 10px 30px rgba(168, 120, 150, 0.08);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: "Nunito", sans-serif;
+      background:
+        radial-gradient(900px 480px at 88% 0%, rgba(255, 214, 226, 0.7), transparent 60%),
+        radial-gradient(720px 420px at 0% 12%, rgba(232, 214, 246, 0.65), transparent 58%),
+        radial-gradient(900px 520px at 50% 100%, rgba(255, 228, 236, 0.55), transparent 55%),
+        var(--blush);
+      line-height: 1.5;
+    }
+
+    img { max-width: 100%; display: block; }
+    button, input { font-family: inherit; }
+    a { color: inherit; text-decoration: none; }
+
+    .nav {
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      padding: 28px 20px 8px;
+      flex-wrap: wrap;
+    }
+    .nav a {
+      font-size: 12px;
+      letter-spacing: 0.16em;
+      font-weight: 700;
+      color: #6e5a72;
+      padding-bottom: 6px;
+      border-bottom: 2px solid transparent;
+    }
+    .nav a.active,
+    .nav a:hover {
+      color: var(--script);
+      border-bottom-color: var(--script);
+    }
+
+    .wrap {
+      width: min(1080px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      min-height: 0;
+      padding: 10px 8px 50px;
+      display: grid;
+      grid-template-columns: minmax(280px, 460px) 1fr;
+      align-items: center;
+      overflow: hidden;
+    }
+    .hero-copy { position: relative; z-index: 5; padding: 20px 10px 48px 24px; text-align: center; }
+    .script-name {
+      font-family: "Great Vibes", cursive;
+      font-size: clamp(76px, 9vw, 108px);
+      color: var(--script);
+      line-height: 0.85;
+      margin: 0;
+      font-weight: 400;
+    }
+    .script-name span {
+      font-size: 0.42em;
+      margin-left: 4px;
+      position: relative;
+      top: -0.35em;
+    }
+    .eyebrow {
+      margin: 14px 0 0;
+      letter-spacing: 0.28em;
+      font-size: 14px;
+      font-weight: 700;
+      color: #6d5874;
+    }
+    .bloom {
+      font-family: "Cormorant Garamond", serif;
+      font-weight: 600;
+      font-size: clamp(64px, 8vw, 92px);
+      letter-spacing: 0.08em;
+      color: var(--plum);
+      margin: 0;
+      line-height: 0.9;
+    }
+    .tagline {
+      margin: 22px 0 0;
+      text-align: center;
+      letter-spacing: 0.18em;
+      font-size: 12px;
+      font-weight: 700;
+      color: #6d5874;
+      line-height: 1.7;
+    }
+    .tagline .heart {
+      display: block;
+      color: var(--rose);
+      letter-spacing: 0;
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+
+    .hero-visual {
+      position: relative;
+      min-height: 0;
+      z-index: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 12px 8px 8px 0;
+    }
+    .baby--hero {
+      width: 100%;
+      height: auto;
+      border-radius: 28px;
+      border: 6px solid #fff;
+      box-shadow:
+        0 0 0 1.5px var(--line-strong),
+        0 16px 36px rgba(168, 120, 150, 0.18);
+        object-fit: none;
+    }
+    
+
+    /* Cards */
+    .card {
+      position: relative;
+      background: rgba(255, 252, 251, 0.86);
+      border: 1.5px solid var(--line);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      padding: 28px 32px 32px;
+      margin: 0 0 22px;
+      overflow: hidden;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(180deg, #c4a4d4, #a884c0);
+      color: white;
+      border-radius: 999px;
+      padding: 7px 14px 7px 12px;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      box-shadow: 0 6px 14px rgba(160, 120, 180, 0.2);
+    }
+    .badge b { font-weight: 800; }
+
+    .details {
+      display: grid;
+      grid-template-columns: 1fr 1.05fr;
+      gap: 28px;
+      align-items: center;
+      margin-top: 22px;
+      position: relative;
+      z-index: 1;
+    }
+    .info-row {
+      display: grid;
+      grid-template-columns: 54px 1fr;
+      gap: 14px;
+      align-items: center;
+      margin-bottom: 18px;
+    }
+    .info-row:last-child { margin-bottom: 0; }
+    .icon-bubble {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 1.5px solid #f3c3d2;
+      display: grid;
+      place-items: center;
+      color: var(--rose-deep);
+      background: #fff;
+    }
+    .info-row strong {
+      display: block;
+      letter-spacing: 0.06em;
+      font-size: 14px;
+      color: #4e3d4c;
+    }
+    .info-row span, .info-row p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .map {
+      height: 210px;
+      border-radius: 18px;
+      border: 1.5px solid #f0d5dc;
+      overflow: hidden;
+      position: relative;
+      background: #f4efe8;
+    }
+    .map svg { width: 100%; height: 100%; display: block; }
+    .map-link {
+      position: absolute;
+      left: 54%;
+      top: 42%;
+      transform: translate(-10%, -115%);
+      background: white;
+      border-radius: 12px;
+      padding: 8px 12px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #5c4a56;
+      box-shadow: 0 8px 18px rgba(90, 60, 70, 0.12);
+      line-height: 1.3;
+      text-align: left;
+    }
+    .map-link small { display: block; font-weight: 600; color: var(--muted); }
+    .map-hint {
+      position: absolute;
+      left: 50%;
+      bottom: 10px;
+      transform: translateX(-50%);
+      background: #fff;
+      border-radius: 999px;
+      padding: 7px 14px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.03em;
+      color: var(--script);
+      box-shadow: 0 6px 14px rgba(90, 60, 70, 0.14);
+      white-space: nowrap;
+    }
+    .map:hover .map-hint { background: #fff5f8; }
+
+    /* Notes */
+    .notes {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 18px;
+      margin-top: 36px;
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+    .note p {
+      margin: 12px 0 0;
+      font-size: 13px;
+      color: #6d5c66;
+      line-height: 1.45;
+    }
+    .dress {
+      margin-top: 28px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    .dress h3 {
+      margin: 0 0 14px;
+      letter-spacing: 0.22em;
+      font-size: 13px;
+      color: var(--plum);
+    }
+    .swatches {
+      display: flex;
+      justify-content: center;
+      gap: 36px;
+    }
+    .swatch { text-align: center; font-size: 11px; letter-spacing: 0.14em; font-weight: 700; color: #7a6572; }
+    .dot {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      margin: 0 auto 8px;
+      border: 1px solid rgba(0,0,0,0.04);
+    }
+    .dot.pink { background: #f4a8be; }
+    .dot.white { background: #fff; border-color: #eadfe4; }
+    .dot.pastel { background: #d9c6ea; }
+
+    /* Confirmation */
+    .confirm {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 28px;
+      align-items: center;
+      margin-top: 8px;
+      position: relative;
+      z-index: 1;
+    }
+    .confirm-copy { text-align: center; padding: 10px 20px; }
+    .confirm-copy p { margin: 8px 0; color: #6a5964; }
+    .by-date {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 28px;
+      color: var(--plum);
+      letter-spacing: 0.04em;
+      margin: 6px 0;
+    }
+    .tiny-heart { color: var(--rose); }
+
+    .form-panel h3 {
+      text-align: center;
+      letter-spacing: 0.14em;
+      font-size: 13px;
+      color: var(--plum-deep);
+      margin: 0 0 16px;
+    }
+    label {
+      display: block;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      font-weight: 800;
+      color: #6a5966;
+      margin-bottom: 6px;
+    }
+    .field { margin-bottom: 12px; }
+    input[type="text"], input[type="number"] {
+      width: 100%;
+      border: 1.5px solid #f0c9d6;
+      background: #fff;
+      border-radius: 8px;
+      padding: 10px 12px;
+      font-size: 14px;
+      color: var(--ink);
+      outline: none;
+    }
+    input:focus { border-color: var(--rose); }
+    .name-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .name-row {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+    .name-row input { flex: 1; }
+    .add-name, .remove-name {
+      border-radius: 999px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+    }
+    .add-name {
+      margin-top: 10px;
+      width: 100%;
+      background: #fff;
+      border: 1.5px dashed #e7c4d0;
+      color: var(--plum-deep);
+      padding: 10px 14px;
+      font-size: 12px;
+    }
+    .add-name:hover { border-color: var(--rose); color: var(--script); }
+    .remove-name {
+      flex: 0 0 auto;
+      background: #efe6f6;
+      border: none;
+      color: #7d64a0;
+      padding: 10px 12px;
+      font-size: 11px;
+    }
+    .remove-name:hover { background: #e4d6f2; }
+    .choices {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 8px;
+    }
+    .choice {
+      border: 1.5px solid transparent;
+      border-radius: 16px;
+      min-height: 92px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      font-size: 13px;
+      line-height: 1.25;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .choice small { font-weight: 700; letter-spacing: 0.02em; }
+    .choice.yes { background: #f8e4ea; color: #c45378; }
+    .choice.no { background: #efe6f6; color: #7d64a0; }
+    .choice.selected {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 16px rgba(160, 100, 130, 0.15);
+      border-color: currentColor;
+    }
+    .choice .mark {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: 12px;
+    }
+    .choice.yes .mark { background: #e56b8d; color: white; }
+    .choice.no .mark { background: #b9a4cf; color: white; }
+
+    /* RSVP */
+    .rsvp {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 28px;
+      flex-wrap: wrap;
+      padding: 8px 0 4px;
+      position: relative;
+      z-index: 1;
+    }
+    .rsvp-note {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #7a6572;
+      font-size: 14px;
+      max-width: 220px;
+    }
+    .submit {
+      background: linear-gradient(180deg, #ee7fa0, #e16890);
+      color: white;
+      border: none;
+      border-radius: 999px;
+      padding: 14px 28px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      font-size: 14px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 8px 16px rgba(225, 104, 144, 0.28);
+    }
+    .submit:hover { filter: brightness(1.03); }
+    .submit:disabled { opacity: 0.7; cursor: wait; }
+    .cant-wait {
+      font-family: "Great Vibes", cursive;
+      color: var(--script);
+      font-size: 28px;
+      margin: 0;
+    }
+    .form-error {
+      display: none;
+      text-align: center;
+      color: #b4234a;
+      font-size: 13px;
+      margin: 8px 0 0;
+    }
+    .form-error.show { display: block; }
+    .success {
+      display: none;
+      text-align: center;
+      padding: 12px 8px 4px;
+    }
+    .success.show { display: block; }
+    .success h3 {
+      font-family: "Great Vibes", cursive;
+      font-size: 42px;
+      color: var(--script);
+      margin: 0 0 6px;
+      font-weight: 400;
+    }
+    .success p { margin: 0; color: #6d5c66; }
+
+    /* Thanks */
+    .thanks {
+      display: grid;
+      grid-template-columns: 280px 1fr 1fr;
+      gap: 18px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+      padding-top: 8px;
+    }
+    .thanks-copy { text-align: center; padding: 0 10px; }
+    .thanks-copy p {
+      margin: 16px 0 0;
+      color: #6d5c66;
+      font-size: 15px;
+    }
+    .quote {
+      position: relative;
+      padding: 8px 28px;
+      text-align: center;
+      color: #6a5968;
+      font-family: "Cormorant Garamond", serif;
+      font-style: italic;
+      font-size: 18px;
+      line-height: 1.45;
+    }
+    .quote .q {
+      font-family: "Cormorant Garamond", serif;
+      font-style: normal;
+      font-size: 54px;
+      color: #d7c3c8;
+      line-height: 0;
+      position: absolute;
+    }
+    .quote .q-open { left: 0; top: 18px; }
+    .quote .q-close { right: 0; bottom: 0; }
+    .cite {
+      display: block;
+      margin-top: 10px;
+      font-style: normal;
+      font-family: "Nunito", sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      font-weight: 800;
+      color: var(--plum);
+    }
+
+    /* Gallery */
+    .gallery {
+      --gallery-visible: 5;
+      --gallery-slide-height: clamp(220px, 28vw, 360px);
+      margin: 4px auto 26px;
+    }
+    .gallery-frame {
+      position: relative;
+    }
+    .gallery-viewport {
+      overflow: hidden;
+      width: 100%;
+      margin: 0 auto;
+    }
+    .gallery-track {
+      display: flex;
+      width: 100%;
+      transition: transform 0.55s ease;
+    }
+    .gallery-slide {
+      flex: 0 0 calc(100% / var(--gallery-visible));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 7px;
+    }
+    .gallery-slide img {
+      height: 100%;
+      width: 100%;
+      object-fit: contain;
+      border: 5px solid #fff;
+      border-radius: 16px;
+    }
+    .gallery-nav {
+      position: absolute;
+      top: calc(var(--gallery-slide-height) / 2);
+      z-index: 2;
+      transform: translateY(-50%);
+      width: 44px;
+      height: 44px;
+      border: 1.5px solid var(--line-strong);
+      border-radius: 50%;
+      background: rgba(255, 252, 251, 0.94);
+      color: var(--script);
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      box-shadow: 0 8px 18px rgba(168, 120, 150, 0.16);
+    }
+    .gallery-nav:hover { background: #fff; color: var(--rose-deep); }
+    .gallery-prev { left: 22px; }
+    .gallery-next { right: 22px; }
+    .gallery-meta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin-top: 14px;
+    }
+    .gallery-count {
+      min-width: 52px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+    }
+    .gallery-dots {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 7px;
+      max-width: min(520px, 70%);
+    }
+    .gallery-dot {
+      width: 8px;
+      height: 8px;
+      padding: 0;
+      border: 0;
+      border-radius: 50%;
+      background: var(--pink-soft);
+      cursor: pointer;
+    }
+    .gallery-dot[aria-current="true"] {
+      background: var(--script);
+      transform: scale(1.15);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .gallery-track { transition: none; }
+    }
+
+    footer {
+      margin-top: 10px;
+      background: linear-gradient(180deg, #cbb6df, #c3abd8);
+      color: white;
+      text-align: center;
+      padding: 16px 16px 18px;
+    }
+    footer p {
+      margin: 0;
+      letter-spacing: 0.16em;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    footer span {
+      display: block;
+      margin-top: 4px;
+      letter-spacing: 0.04em;
+      font-weight: 500;
+      font-size: 13px;
+      opacity: 0.95;
+    }
+
+    @media (max-width: 860px) {
+      .hero, .details, .confirm, .thanks { grid-template-columns: 1fr; }
+      .notes { grid-template-columns: 1fr 1fr; }
+      .hero { min-height: 0; padding-bottom: 40px; }
+      .hero-visual { padding: 8px 0 0; }
+      .gallery {
+        --gallery-visible: 2;
+        --gallery-slide-height: clamp(210px, 62vw, 420px);
+      }
+      .gallery-nav { width: 38px; height: 38px; }
+      .gallery-prev { left: 18px; }
+      .gallery-next { right: 18px; }
+      .thanks { justify-items: center; }
+      .card { padding: 24px 18px 28px; }
+      .nav { gap: 14px 18px; }
+    }
+    @media (max-width: 560px) {
+      .notes, .choices, .swatches { grid-template-columns: 1fr; }
+      .swatches { display: flex; }
+      .script-name { font-size: 72px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <a href="#home" class="active">HOME</a>
+    <a href="#details">EVENT DETAILS</a>
+    <a href="#note">KINDLY NOTE</a>
+    <a href="#confirm">CONFIRMATION</a>
+    <a href="#rsvp">RSVP</a>
+    <a href="#thanks">THANK YOU</a>
+  </nav>
+
+  <header class="hero wrap" id="home">
+    <div class="hero-copy">
+      <h1 class="script-name">Ylara's</h1>
+      <p class="eyebrow">FIRST YEAR IN</p>
+      <p class="bloom">BLOOM</p>
+      <p class="tagline">
+        <span class="heart">♥</span>
+        A YEAR OF LOVE,<br>GROWTH &amp; BLESSINGS
+      </p>
+    </div>
+    <div class="hero-visual">
+      <img class="baby--hero" src="assets/7799-e.png" alt="Ylara in a pink dress and flower crown">
+    </div>
+  </header>
+
+  <section class="gallery wrap" id="gallery" tabindex="0" aria-roledescription="carousel" aria-label="Ylara photo gallery">
+    <div class="gallery-frame">
+      <button class="gallery-nav gallery-prev" type="button" aria-label="Previous photo">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M14.5 5.5 8 12l6.5 6.5"/></svg>
+      </button>
+      <div class="gallery-viewport">
+        <div class="gallery-track" id="gallery-track">
+          <div class="gallery-slide"><img src="gallery/DSC07797.JPG" alt="Ylara seated in a pink tulle dress and flower crown"></div>
+          <div class="gallery-slide"><img src="gallery/DSC07806.JPG" alt="Ylara in a pink tulle dress" loading="lazy"></div>
+          <div class="gallery-slide"><img src="gallery/DSC07817.JPG" alt="Ylara in a pink tulle dress" loading="lazy"></div>
+          <div class="gallery-slide"><img src="gallery/DSC07840.JPG" alt="Ylara in a pink tulle dress" loading="lazy"></div>
+          <div class="gallery-slide"><img src="gallery/DSC07847.JPG" alt="Ylara crawling in a pink tulle dress and flower crown" loading="lazy"></div>
+          <div class="gallery-slide"><img src="gallery/DSC07857.JPG" alt="Ylara in a pink tulle dress" loading="lazy"></div>
+          <div class="gallery-slide"><img src="gallery/DSC07858.JPG" alt="Ylara in a pink tulle dress" loading="lazy"></div>
+          <div class="gallery-slide"><img src="gallery/DSC07861.JPG" alt="Ylara in a pink tulle dress" loading="lazy"></div>
+          <div class="gallery-slide"><img src="gallery/DSC07876.JPG" alt="Ylara in a pink tulle dress" loading="lazy"></div>
+          <div class="gallery-slide"><img src="gallery/DSC07878.JPG" alt="Ylara in a pink tulle dress" loading="lazy"></div>
+          <div class="gallery-slide"><img src="gallery/DSC07909.JPG" alt="Ylara in a pink tulle dress" loading="lazy"></div>
+          <div class="gallery-slide"><img src="gallery/DSC07929.JPG" alt="Ylara in a pink tulle dress" loading="lazy"></div>
+          <div class="gallery-slide"><img src="gallery/DSC07932.JPG" alt="Ylara in a pink tulle dress" loading="lazy"></div>
+          <div class="gallery-slide"><img src="gallery/DSC07938.JPG" alt="Ylara in a pink tulle dress" loading="lazy"></div>
+          <div class="gallery-slide"><img src="gallery/DSC07983.JPG" alt="Ylara standing in a cream floral dress" loading="lazy"></div>
+          <div class="gallery-slide"><img src="gallery/DSC07985.JPG" alt="Ylara in a cream floral dress" loading="lazy"></div>
+          <div class="gallery-slide"><img src="gallery/DSC08012.JPG" alt="Ylara in a cream floral dress" loading="lazy"></div>
+        </div>
+      </div>
+      <button class="gallery-nav gallery-next" type="button" aria-label="Next photo">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m9.5 5.5 6.5 6.5-6.5 6.5"/></svg>
+      </button>
+      <div class="gallery-meta">
+        <p class="gallery-count" id="gallery-count" aria-live="polite">1 / 18</p>
+        <div class="gallery-dots" id="gallery-dots"></div>
+      </div>
+    </div>
+  </section>
+
+  <main class="wrap">
+    <section class="card" id="details">
+      <span class="badge"><b>01</b> EVENT DETAILS</span>
+      <div class="details">
+        <div>
+          <div class="info-row">
+            <div class="icon-bubble" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3v4M16 3v4M4 10h16"/></svg>
+            </div>
+            <div>
+              <strong>NOVEMBER 7, 2026</strong>
+              <span>(SATURDAY)</span>
+            </div>
+          </div>
+          <div class="info-row">
+            <div class="icon-bubble" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="8"/><path d="M12 8v5l3 2"/></svg>
+            </div>
+            <div><strong>2:00 PM</strong></div>
+          </div>
+          <div class="info-row">
+            <div class="icon-bubble" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.2"/></svg>
+            </div>
+            <div>
+              <strong>MCCOLOR'S DUBAI WORLD</strong>
+              <p>Brgy. Sala, Cabuyao, Laguna</p>
+            </div>
+          </div>
+        </div>
+        <a class="map" href="https://www.google.com/maps/search/?api=1&query=McColor%27s+Dubai+World+Cabuyao+Laguna" target="_blank" rel="noopener">
+          <svg viewBox="0 0 520 280" aria-hidden="true">
+            <rect width="520" height="280" fill="#efe8df"/>
+            <path d="M0 48h520M0 112h520M0 176h520M0 236h520" stroke="#e7ddd2" stroke-width="18"/>
+            <path d="M70 0v280M160 0v280M255 0v280M360 0v280M455 0v280" stroke="#e7ddd2" stroke-width="16"/>
+            <path d="M-10 90 C 80 40, 150 130, 240 70 S 380 40, 530 110" stroke="#f7f3ee" stroke-width="14" fill="none"/>
+            <path d="M-10 190 C 90 150, 180 220, 300 170 S 430 200, 540 150" stroke="#f8f5f1" stroke-width="12" fill="none"/>
+            <path d="M268 78c16 22 16 34 0 58c-16-24-16-36 0-58z" fill="#e25b86"/>
+            <circle cx="268" cy="98" r="6" fill="#fff"/>
+          </svg>
+          <span class="map-link">McColor's<br>Dubai World</span>
+          <span class="map-hint">Click to view on Google Maps</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="card" id="note">
+      <span class="badge"><b>02</b> KINDLY NOTE &amp; DRESS CODE</span>
+      <div class="notes">
+        <div class="note">
+          <div class="icon-bubble" style="margin:0 auto" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="9" cy="9" r="3"/><circle cx="16" cy="10" r="2.4"/><path d="M4 19c.6-3 2.6-4.5 5-4.5s4.4 1.5 5 4.5M14 15.2c.8-.5 1.8-.7 3-.7 2 0 3.4 1.2 4 3.5"/></svg>
+          </div>
+          <p>Strictly for invited guests only. Only names listed in the invitation are allowed.</p>
+        </div>
+        <div class="note">
+          <div class="icon-bubble" style="margin:0 auto" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="8"/><path d="M7 7l10 10"/></svg>
+          </div>
+          <p>No outsiders or additional guests allowed.</p>
+        </div>
+        <div class="note">
+          <div class="icon-bubble" style="margin:0 auto" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3v4M16 3v4M4 10h16M8 15h4"/></svg>
+          </div>
+          <p>Please confirm the exact number of guests attending.</p>
+        </div>
+        <div class="note">
+          <div class="icon-bubble" style="margin:0 auto" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M8 3v8M8 11c0 2 1.2 3 2.5 3"/><path d="M15 3v18M12.5 3h5"/></svg>
+          </div>
+          <p>This is important for our final food and seating headcount.</p>
+        </div>
+        <div class="note">
+          <div class="icon-bubble" style="margin:0 auto" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="8"/><path d="M12 8v5l3 2"/></svg>
+          </div>
+          <p>Please be on time.<br/>First Come, First Serve Basis in the Venue</p>
+        </div>
+      </div>
+      <div class="dress">
+        <h3>DRESS CODE</h3>
+        <div class="swatches">
+          <div class="swatch"><div class="dot pink"></div>PINK</div>
+          <div class="swatch"><div class="dot white"></div>WHITE</div>
+          <div class="swatch"><div class="dot pastel"></div>PASTEL</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" id="confirm">
+      <span class="badge"><b>03</b> CONFIRMATION</span>
+      <form id="rsvp-form" class="confirm" novalidate>
+        <div class="confirm-copy">
+          <div class="icon-bubble" style="margin:0 auto 10px" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3v4M16 3v4M4 10h16"/></svg>
+          </div>
+          <p>Please confirm your attendance<br>on or before</p>
+          <p class="by-date">OCTOBER 20, 2026.</p>
+          <div class="tiny-heart">♥</div>
+          <p>Kindly list the full name of each guest who will be attending.</p>
+        </div>
+        <div class="form-panel">
+          <h3>PLEASE FILL OUT THE DETAILS BELOW:</h3>
+          <div class="field">
+            <label>FULL NAME(S)</label>
+            <div class="name-list" id="name-list">
+              <div class="name-row">
+                <input class="guest-name" name="fullname" type="text" placeholder="Guest 1" autocomplete="name" aria-label="Guest 1">
+              </div>
+            </div>
+            <button type="button" class="add-name" id="add-name">+ ADD ANOTHER NAME</button>
+          </div>
+          <p class="form-error" id="form-error">Please add at least one full name.</p>
+        </div>
+      </form>
+    </section>
+
+    <section class="card" id="rsvp">
+      <span class="badge"><b>04</b> RSVP NOW</span>
+      <div class="rsvp" id="rsvp-actions">
+        <div class="rsvp-note">
+          <div class="icon-bubble" aria-hidden="true" style="width: 100px;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 8l9 6 9-6"/></svg>
+          </div>
+          <span>Please click the button below to submit your response.</span>
+        </div>
+        <button class="submit" type="submit" form="rsvp-form">SUBMIT MY RSVP</button>
+        <p class="cant-wait">We can't wait to celebrate with you!</p>
+      </div>
+      <div class="success" id="success">
+        <h3>Thank you</h3>
+        <p id="success-text">Your response has been noted. We can't wait to celebrate with you!</p>
+      </div>
+    </section>
+
+    <section class="card" id="thanks">
+      <div class="thanks">
+        <img class="baby--thanks" src="assets/ty-image.png" alt="Ylara in a lavender dress and flower crown">
+        <div class="thanks-copy">
+          <span class="badge"><b>05</b> THANK YOU</span>
+          <p>We can't wait to celebrate this special day with you and create beautiful memories together!<br>Your presence means the world to us.</p>
+        </div>
+        <blockquote class="quote">
+          <span class="q q-open">“</span>
+          Children are a heritage from the Lord, offspring a reward from Him. He guides the humble in what is right and teaches them His way.
+          <span class="cite">— PSALM 127:3</span>
+          <span class="q q-close">”</span>
+        </blockquote>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>YLARA'S FIRST YEAR IN BLOOM</p>
+    <span>A celebration of love, growth and beautiful memories.</span>
+  </footer>
+
+  <script>
+    const links = document.querySelectorAll(".nav a");
+    const sections = ["home", "details", "note", "confirm", "rsvp", "thanks"].map(id => document.getElementById(id));
+
+    function markNav() {
+      const y = window.scrollY + 120;
+      let current = "home";
+      sections.forEach(section => {
+        if (section.offsetTop <= y) current = section.id;
+      });
+      links.forEach(link => {
+        link.classList.toggle("active", link.getAttribute("href") === "#" + current);
+      });
+    }
+    window.addEventListener("scroll", markNav, { passive: true });
+
+    const nameList = document.getElementById("name-list");
+    let nameCount = 1;
+
+    nameList.addEventListener("click", event => {
+      const button = event.target.closest(".remove-name");
+      if (!button) return;
+      button.closest(".name-row").remove();
+    });
+
+    document.getElementById("add-name").addEventListener("click", () => {
+      nameCount += 1;
+      const row = document.createElement("div");
+      row.className = "name-row";
+      const input = document.createElement("input");
+      input.className = "guest-name";
+      input.type = "text";
+      input.name = "fullname";
+      input.placeholder = "Guest " + nameCount;
+      input.setAttribute("aria-label", "Guest " + nameCount);
+      const remove = document.createElement("button");
+      remove.type = "button";
+      remove.className = "remove-name";
+      remove.textContent = "REMOVE";
+      row.append(input, remove);
+      nameList.appendChild(row);
+      input.focus();
+    });
+
+    const gallery = document.getElementById("gallery");
+    const track = document.getElementById("gallery-track");
+    const slides = [...track.children];
+    const dots = document.getElementById("gallery-dots");
+    const count = document.getElementById("gallery-count");
+    const mobileGallery = window.matchMedia("(max-width: 860px)");
+    let page = 0;
+    let galleryTimer;
+    let visible = 0;
+
+    function visibleCount() {
+      return mobileGallery.matches ? 2 : 5;
+    }
+
+    function pageCount() {
+      return Math.max(1, Math.ceil(slides.length / visibleCount()));
+    }
+
+    function pageStart(index) {
+      const shown = visibleCount();
+      const pages = pageCount();
+      const maxStart = Math.max(0, slides.length - shown);
+      if (index >= pages - 1) return maxStart;
+      return Math.min(index * shown, maxStart);
+    }
+
+    function renderDots() {
+      const pages = pageCount();
+      dots.replaceChildren();
+      for (let i = 0; i < pages; i++) {
+        const dot = document.createElement("button");
+        dot.type = "button";
+        dot.className = "gallery-dot";
+        const start = pageStart(i) + 1;
+        const end = Math.min(slides.length, pageStart(i) + visibleCount());
+        dot.setAttribute("aria-label", "Show photos " + start + " to " + end);
+        dot.addEventListener("click", () => showPage(i));
+        dots.appendChild(dot);
+      }
+    }
+
+    function showPage(index) {
+      const pages = pageCount();
+      page = (index + pages) % pages;
+      const start = pageStart(page);
+      const shown = visibleCount();
+      track.style.transform = "translateX(-" + (start * (100 / shown)) + "%)";
+      const end = Math.min(slides.length, start + shown);
+      count.textContent = (start + 1) + "–" + end + " / " + slides.length;
+      [...dots.children].forEach((dot, i) => {
+        if (i === page) dot.setAttribute("aria-current", "true");
+        else dot.removeAttribute("aria-current");
+      });
+    }
+
+    function syncGallery() {
+      const nextVisible = visibleCount();
+      if (nextVisible !== visible) {
+        visible = nextVisible;
+        page = 0;
+        renderDots();
+      }
+      showPage(page);
+    }
+
+    function startGallery() {
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      clearInterval(galleryTimer);
+      galleryTimer = setInterval(() => showPage(page + 1), 4500);
+    }
+
+    gallery.querySelector(".gallery-prev").addEventListener("click", () => showPage(page - 1));
+    gallery.querySelector(".gallery-next").addEventListener("click", () => showPage(page + 1));
+    gallery.addEventListener("mouseenter", () => clearInterval(galleryTimer));
+    gallery.addEventListener("mouseleave", startGallery);
+    gallery.addEventListener("keydown", event => {
+      if (event.key === "ArrowLeft") showPage(page - 1);
+      if (event.key === "ArrowRight") showPage(page + 1);
+    });
+
+    let touchStartX = 0;
+    gallery.addEventListener("touchstart", event => {
+      touchStartX = event.changedTouches[0].clientX;
+    }, { passive: true });
+    gallery.addEventListener("touchend", event => {
+      const delta = event.changedTouches[0].clientX - touchStartX;
+      if (Math.abs(delta) < 40) return;
+      showPage(page + (delta < 0 ? 1 : -1));
+    });
+
+    mobileGallery.addEventListener("change", syncGallery);
+    window.addEventListener("resize", syncGallery);
+    syncGallery();
+    startGallery();
+
+    const RSVP_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyKcsJYZks3xFBrUFAbFP3E5zJTl1G7t2il9e0oNYKjd0N5G_72GvjMKy8ug-CC0uK6/exec";
+
+    document.getElementById("rsvp-form").addEventListener("submit", async event => {
+      event.preventDefault();
+      const names = [...document.querySelectorAll(".guest-name")]
+        .map(input => input.value.trim())
+        .filter(Boolean);
+      const error = document.getElementById("form-error");
+      const button = document.querySelector(".submit");
+      if (!names.length) {
+        error.textContent = "Please add at least one full name.";
+        error.classList.add("show");
+        document.getElementById("confirm").scrollIntoView({ behavior: "smooth", block: "center" });
+        return;
+      }
+      if (!RSVP_SCRIPT_URL.startsWith("https://script.google.com/")) {
+        error.textContent = "RSVP saving is not connected to Google Sheets yet.";
+        error.classList.add("show");
+        return;
+      }
+      error.classList.remove("show");
+      button.disabled = true;
+      button.textContent = "SAVING...";
+      try {
+        await fetch(RSVP_SCRIPT_URL, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body: JSON.stringify({ names: names })
+        });
+        const success = document.getElementById("success");
+        const text = document.getElementById("success-text");
+        document.getElementById("rsvp-actions").style.display = "none";
+        success.classList.add("show");
+        const label = names.length === 1 ? "guest" : "guests";
+        text.textContent = "We saved " + names.length + " " + label + ": " + names.join(", ") + ". We can't wait to celebrate with you!";
+      } catch (err) {
+        error.textContent = "Could not save your RSVP. Please check your connection and try again.";
+        error.classList.add("show");
+        button.disabled = false;
+        button.textContent = "SUBMIT MY RSVP";
+      }
+    });
+  </script>
+</body>
+</html>
